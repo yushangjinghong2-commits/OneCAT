@@ -1,0 +1,92 @@
+[
+  {
+    "doc_id": "0",
+    "task": "mmsi_msr_visual_cot",
+    "split": "train",
+    "mode": "understanding",
+    "prompt": "[GEN_PROMPT]Create a visualization that breaks down the multi-step reasoning process. Annotate spatial relationships, object positions, and key changes across images. Draw diagrams showing logical connections and intermediate reasoning steps.[/GEN_PROMPT][QUESTION]You are given the original images and a visualization breaking down the reasoning steps. Use both to analyze spatial relationships, object positions, and changes across images.\n\nIn the series of photos taken from a first-person perspective, where is the printer located relative to you in the last photo?\nOptions: A: Rear left, B: Rear right, C: Right, D: Rear\n\nBased on your multi-step reasoning, answer with the option's letter from the given choices directly. Enclose the option's letter within ``.[/QUESTION]",
+    "output": "B",
+    "input_image": "./images/0.jpg"
+  },
+  {
+    "doc_id": "1",
+    "task": "mmsi_msr_visual_cot",
+    "split": "train",
+    "mode": "understanding",
+    "prompt": "[GEN_PROMPT]Create a visualization that breaks down the multi-step reasoning process. Annotate spatial relationships, object positions, and key changes across images. Draw diagrams showing logical connections and intermediate reasoning steps.[/GEN_PROMPT][QUESTION]You are given the original images and a visualization breaking down the reasoning steps. Use both to analyze spatial relationships, object positions, and changes across images.\n\nThe image is a series of first-person perspective shots, with the backrest of the sectional sofa being at the rear of the sectional sofa. What object is on the right side of the sectional sofa?\nOptions: A: Swimming pool, B: Kitchen, C: White lounge chair, D: Table surrounded by four chairs\n\nBased on your multi-step reasoning, answer with the option's letter from the given choices directly. Enclose the option's letter within ``.[/QUESTION]",
+    "output": "C",
+    "input_image": "./images/1.jpg"
+  },
+  {
+    "doc_id": "0",
+    "task": "mmsi_attribute_appr_visual_cot",
+    "split": "train",
+    "mode": "understanding",
+    "prompt": "[GEN_PROMPT]Create a visualization that highlights and labels the visual appearance attributes (color, shape, texture, orientation, count) in the scene. Use annotations, bounding boxes, and labels to make object features and counts clearly visible.[/GEN_PROMPT][QUESTION]You are given the original image(s) and a visualization highlighting appearance attributes. Use both to analyze color, shape, texture, orientation, and object counts.\n\nFigure 1 shows the front of the statue, with the statue at the center. Which side of the statue is shown in Figure 2?\nOptions: A: Right, B: Left, C: Back, D: Front\n\nBased on your visual observation, answer with the option's letter from the given choices directly. Enclose the option's letter within ``.[/QUESTION]",
+    "output": "B",
+    "input_image": "./images/0.jpg"
+  },
+  {
+    "doc_id": "1",
+    "task": "mmsi_attribute_appr_visual_cot",
+    "split": "train",
+    "mode": "understanding",
+    "prompt": "[GEN_PROMPT]Create a visualization that highlights and labels the visual appearance attributes (color, shape, texture, orientation, count) in the scene. Use annotations, bounding boxes, and labels to make object features and counts clearly visible.[/GEN_PROMPT][QUESTION]You are given the original image(s) and a visualization highlighting appearance attributes. Use both to analyze color, shape, texture, orientation, and object counts.\n\nHow many windows are there in total on the first floor of the house shown in these two pictures?\nOptions: A: 6, B: 5, C: 4, D: 3\n\nBased on your visual observation, answer with the option's letter from the given choices directly. Enclose the option's letter within ``.[/QUESTION]",
+    "output": "B",
+    "input_image": "./images/1.jpg"
+  },
+  {
+    "doc_id": "0",
+    "task": "mmsi_attribute_meas_visual_cot",
+    "split": "train",
+    "mode": "understanding",
+    "prompt": "[GEN_PROMPT]Create a visualization that highlights and annotates the measurable attributes (size, length, width, height, distance, area, volume) in the scene. Draw measurement lines, labels, and comparison markers to make quantitative relationships clear.[/GEN_PROMPT][QUESTION]You are given the original image(s) and a visualization highlighting measurable attributes. Use both to analyze size, length, width, height, distance, area, and volume relationships.\n\nWhich is greater, the length of the silver stool or the width of the conference table?\nOptions: A: The length of the silver stool, B: They are the same, C: Sometimes the length of the silver stool is greater, sometimes the width of the conference table is greater, D: The width of the conference table\n\nBased on your measurement analysis, answer with the option's letter from the given choices directly. Enclose the option's letter within ``.[/QUESTION]",
+    "output": "A",
+    "input_image": "./images/0.jpg"
+  },
+  {
+    "doc_id": "1",
+    "task": "mmsi_attribute_meas_visual_cot",
+    "split": "train",
+    "mode": "understanding",
+    "prompt": "[GEN_PROMPT]Create a visualization that highlights and annotates the measurable attributes (size, length, width, height, distance, area, volume) in the scene. Draw measurement lines, labels, and comparison markers to make quantitative relationships clear.[/GEN_PROMPT][QUESTION]You are given the original image(s) and a visualization highlighting measurable attributes. Use both to analyze size, length, width, height, distance, area, and volume relationships.\n\nComparing the width of the book on the chair in Figure 1 and the width of the book on the table in Figure 2, which one is wider?\nOptions: A: Sometimes the width of the book on the table in Figure 2, sometimes, B: The same width, C: The width of the book on the table in Figure 2 is wider, D: The width of the book on the chair in Figure 1 is wider\n\nBased on your measurement analysis, answer with the option's letter from the given choices directly. Enclose the option's letter within ``.[/QUESTION]",
+    "output": "C",
+    "input_image": "./images/1.jpg"
+  },
+  {
+    "doc_id": "0",
+    "task": "mmsi_motion_cam_visual_cot",
+    "split": "train",
+    "mode": "understanding",
+    "prompt": "[GEN_PROMPT]Create a visualization showing camera motion analysis. Draw arrows indicating the direction of camera movement/rotation, highlight reference points that shift between frames, and annotate the type of camera motion (pan, tilt, zoom, dolly, etc.).[/GEN_PROMPT][QUESTION]You are given consecutive first-person perspective images and a visualization of camera motion. Use both to determine how the camera (viewpoint) is moving or rotating.\n\nThe images are taken continuously from a first-person perspective. In which direction is the camera moving?\nOptions: A: lower right, B: lower left, C: upper left, D: upper right\n\nBased on your analysis of camera motion, answer with the option's letter from the given choices directly. Enclose the option's letter within ``.[/QUESTION]",
+    "output": "B",
+    "input_image": "./images/0.jpg"
+  },
+  {
+    "doc_id": "1",
+    "task": "mmsi_motion_cam_visual_cot",
+    "split": "train",
+    "mode": "understanding",
+    "prompt": "[GEN_PROMPT]Create a visualization showing camera motion analysis. Draw arrows indicating the direction of camera movement/rotation, highlight reference points that shift between frames, and annotate the type of camera motion (pan, tilt, zoom, dolly, etc.).[/GEN_PROMPT][QUESTION]You are given consecutive first-person perspective images and a visualization of camera motion. Use both to determine how the camera (viewpoint) is moving or rotating.\n\nThe images are taken continuously from a first-person perspective. In which direction is the camera rotating?\nOptions: A: Up, B: Right, C: Down, D: Left\n\nBased on your analysis of camera motion, answer with the option's letter from the given choices directly. Enclose the option's letter within ``.[/QUESTION]",
+    "output": "B",
+    "input_image": "./images/1.jpg"
+  },
+  {
+    "doc_id": "0",
+    "task": "mmsi_motion_obj_visual_cot",
+    "split": "train",
+    "mode": "understanding",
+    "prompt": "[GEN_PROMPT]Create a visualization showing object motion tracking. Draw motion trails, arrows indicating direction of movement, and highlight moving objects with bounding boxes. Annotate relative speeds and trajectories of different objects.[/GEN_PROMPT][QUESTION]You are given consecutive images and a visualization of object motion. Use both to track objects, identify which are moving, their direction, and relative speeds.\n\nThese two photos were taken consecutively. Between the person in the middle of the road and the person on the left who is on the crosswalk, whose average speed of movement is faster during the time these photos were taken?\nOptions: A: Sometimes the person on the left is faster, sometimes the person in the middle of the road is faster, B: The person on the left, C: The same speed, D: The person in the middle of the road\n\nBased on your analysis of object motion, answer with the option's letter from the given choices directly. Enclose the option's letter within ``.[/QUESTION]",
+    "output": "B",
+    "input_image": "./images/0.jpg"
+  },
+  {
+    "doc_id": "1",
+    "task": "mmsi_motion_obj_visual_cot",
+    "split": "train",
+    "mode": "understanding",
+    "prompt": "[GEN_PROMPT]Create a visualization showing object motion tracking. Draw motion trails, arrows indicating direction of movement, and highlight moving objects with bounding boxes. Annotate relative speeds and trajectories of different objects.[/GEN_PROMPT][QUESTION]You are given consecutive images and a visualization of object motion. Use both to track objects, identify which are moving, their direction, and relative speeds.\n\nHow many vehicles in the picture are in motion?\nOptions: A: 4, B: 1, C: 2, D: 3\n\nBased on your analysis of object motion, answer with the option's letter from the given choices directly. Enclose the option's letter within ``.[/QUESTION]",
+    "output": "A",
+    "input_image": "./images/1.jpg"
+  }
+]

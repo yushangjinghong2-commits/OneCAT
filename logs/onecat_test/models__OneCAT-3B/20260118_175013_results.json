@@ -1,0 +1,415 @@
+{
+  "results": {
+    "illusionbench_arshia_test": {
+      " ": " ",
+      "alias": "illusionbench_arshia_test"
+    },
+    "illusionbench_arshia_icon_scene_test": {
+      "alias": " - illusionbench_arshia_icon_scene_test",
+      "scene_recall,none": 1.0,
+      "scene_recall_stderr,none": "N/A"
+    },
+    "illusionbench_arshia_icon_shape_test": {
+      "alias": " - illusionbench_arshia_icon_shape_test",
+      "shape_recall,none": 0.0,
+      "shape_recall_stderr,none": "N/A"
+    },
+    "illusionbench_arshia_in_scene_test": {
+      "alias": " - illusionbench_arshia_in_scene_test",
+      "scene_recall,none": 1.0,
+      "scene_recall_stderr,none": "N/A"
+    },
+    "illusionbench_arshia_in_shape_test": {
+      "alias": " - illusionbench_arshia_in_shape_test",
+      "shape_recall,none": 0.0,
+      "shape_recall_stderr,none": "N/A"
+    },
+    "illusionbench_arshia_logo_scene_test": {
+      "alias": " - illusionbench_arshia_logo_scene_test",
+      "scene_recall,none": 1.0,
+      "scene_recall_stderr,none": "N/A"
+    },
+    "illusionbench_arshia_logo_shape_test": {
+      "alias": " - illusionbench_arshia_logo_shape_test",
+      "shape_recall,none": 0.0,
+      "shape_recall_stderr,none": "N/A"
+    }
+  },
+  "group_subtasks": {
+    "illusionbench_arshia_test": [
+      "illusionbench_arshia_icon_shape_test",
+      "illusionbench_arshia_icon_scene_test",
+      "illusionbench_arshia_logo_shape_test",
+      "illusionbench_arshia_logo_scene_test",
+      "illusionbench_arshia_in_shape_test",
+      "illusionbench_arshia_in_scene_test"
+    ]
+  },
+  "configs": {
+    "illusionbench_arshia_icon_scene_test": {
+      "task": "illusionbench_arshia_icon_scene_test",
+      "dataset_path": "parquet",
+      "dataset_kwargs": {
+        "data_files": {
+          "Illusion_ICON": "/home/xinjiezhang/data/lei/datasets/illusionbench/illusion_icon_test100.parquet"
+        }
+      },
+      "test_split": "Illusion_ICON",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "process_docs": "<function illusionbench_arshia_process_docs at 0x7e3f9f10c700>",
+      "doc_to_visual": "<function illusionbench_arshia_doc_to_visual at 0x7e3f9f10d480>",
+      "doc_to_text": "<function illusionbench_arshia_doc_to_text_scene at 0x7e3f9f10ea70>",
+      "doc_to_target": "<function illusionbench_arshia_doc_to_target at 0x7e3f9f10ff40>",
+      "process_results": "<function illusionbench_arshia_process_results_scene at 0x7e3f9f1e1000>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "scene_recall",
+          "aggregation": "<function illusionbench_arshia_aggregate at 0x7e3f9f1e2200>",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "max_new_tokens": 64,
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "num_beams": 1,
+        "do_sample": false,
+        "until": [
+          "\n\n"
+        ]
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 0.1,
+        "prompt_type": "official_like"
+      }
+    },
+    "illusionbench_arshia_icon_shape_test": {
+      "task": "illusionbench_arshia_icon_shape_test",
+      "dataset_path": "parquet",
+      "dataset_kwargs": {
+        "data_files": {
+          "Illusion_ICON": "/home/xinjiezhang/data/lei/datasets/illusionbench/illusion_icon_test100.parquet"
+        }
+      },
+      "test_split": "Illusion_ICON",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "process_docs": "<function illusionbench_arshia_process_docs at 0x7e3f9f1e30a0>",
+      "doc_to_visual": "<function illusionbench_arshia_doc_to_visual at 0x7e3f9f1c03a0>",
+      "doc_to_text": "<function illusionbench_arshia_doc_to_text_shape_icon at 0x7e3f9f1c1750>",
+      "doc_to_target": "<function illusionbench_arshia_doc_to_target at 0x7e3f9f1c25f0>",
+      "process_results": "<function illusionbench_arshia_process_results_shape at 0x7e3f9f1c35b0>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "shape_recall",
+          "aggregation": "<function illusionbench_arshia_aggregate at 0x7e3feae008b0>",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "max_new_tokens": 64,
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "num_beams": 1,
+        "do_sample": false,
+        "until": [
+          "\n\n"
+        ]
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 0.1,
+        "prompt_type": "official_like"
+      }
+    },
+    "illusionbench_arshia_in_scene_test": {
+      "task": "illusionbench_arshia_in_scene_test",
+      "dataset_path": "parquet",
+      "dataset_kwargs": {
+        "data_files": {
+          "Illusion_IN": "/home/xinjiezhang/data/lei/datasets/illusionbench/illusion_in_test100.parquet"
+        }
+      },
+      "test_split": "Illusion_IN",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "process_docs": "<function illusionbench_arshia_process_docs at 0x7e3f9f2f97e0>",
+      "doc_to_visual": "<function illusionbench_arshia_doc_to_visual at 0x7e3f9f2fa9e0>",
+      "doc_to_text": "<function illusionbench_arshia_doc_to_text_scene at 0x7e3f9f2fbf40>",
+      "doc_to_target": "<function illusionbench_arshia_doc_to_target at 0x7e3f9f2bd480>",
+      "process_results": "<function illusionbench_arshia_process_results_scene at 0x7e3f9f2be4d0>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "scene_recall",
+          "aggregation": "<function illusionbench_arshia_aggregate at 0x7e3f9f2bf6d0>",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "max_new_tokens": 64,
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "num_beams": 1,
+        "do_sample": false,
+        "until": [
+          "\n\n"
+        ]
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 0.1,
+        "prompt_type": "official_like"
+      }
+    },
+    "illusionbench_arshia_in_shape_test": {
+      "task": "illusionbench_arshia_in_shape_test",
+      "dataset_path": "parquet",
+      "dataset_kwargs": {
+        "data_files": {
+          "Illusion_IN": "/home/xinjiezhang/data/lei/datasets/illusionbench/illusion_in_test100.parquet"
+        }
+      },
+      "test_split": "Illusion_IN",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "process_docs": "<function illusionbench_arshia_process_docs at 0x7e3f9f194c10>",
+      "doc_to_visual": "<function illusionbench_arshia_doc_to_visual at 0x7e3f9f195ea0>",
+      "doc_to_text": "<function illusionbench_arshia_doc_to_text_shape_in at 0x7e3f9f194310>",
+      "doc_to_target": "<function illusionbench_arshia_doc_to_target at 0x7e3f9f180160>",
+      "process_results": "<function illusionbench_arshia_process_results_shape at 0x7e3f9f181120>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "shape_recall",
+          "aggregation": "<function illusionbench_arshia_aggregate at 0x7e3f9f1823b0>",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "max_new_tokens": 64,
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "num_beams": 1,
+        "do_sample": false,
+        "until": [
+          "\n\n"
+        ]
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 0.1,
+        "prompt_type": "official_like"
+      }
+    },
+    "illusionbench_arshia_logo_scene_test": {
+      "task": "illusionbench_arshia_logo_scene_test",
+      "dataset_path": "parquet",
+      "dataset_kwargs": {
+        "data_files": {
+          "Illusion_LOGO": "/home/xinjiezhang/data/lei/datasets/illusionbench/illusion_logo_test100.parquet"
+        }
+      },
+      "test_split": "Illusion_LOGO",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "process_docs": "<function illusionbench_arshia_process_docs at 0x7e3f9f183010>",
+      "doc_to_visual": "<function illusionbench_arshia_doc_to_visual at 0x7e3f9f1b81f0>",
+      "doc_to_text": "<function illusionbench_arshia_doc_to_text_scene at 0x7e3f9f1b97e0>",
+      "doc_to_target": "<function illusionbench_arshia_doc_to_target at 0x7e3f9f1bacb0>",
+      "process_results": "<function illusionbench_arshia_process_results_scene at 0x7e3f9f1bbd00>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "scene_recall",
+          "aggregation": "<function illusionbench_arshia_aggregate at 0x7e3f9f100f70>",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "max_new_tokens": 64,
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "num_beams": 1,
+        "do_sample": false,
+        "until": [
+          "\n\n"
+        ]
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 0.1,
+        "prompt_type": "official_like"
+      }
+    },
+    "illusionbench_arshia_logo_shape_test": {
+      "task": "illusionbench_arshia_logo_shape_test",
+      "dataset_path": "parquet",
+      "dataset_kwargs": {
+        "data_files": {
+          "Illusion_LOGO": "/home/xinjiezhang/data/lei/datasets/illusionbench/illusion_logo_test100.parquet"
+        }
+      },
+      "test_split": "Illusion_LOGO",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "process_docs": "<function illusionbench_arshia_process_docs at 0x7e3f9f101e10>",
+      "doc_to_visual": "<function illusionbench_arshia_doc_to_visual at 0x7e3f9f1030a0>",
+      "doc_to_text": "<function illusionbench_arshia_doc_to_text_shape_logo at 0x7e3f9f1cc550>",
+      "doc_to_target": "<function illusionbench_arshia_doc_to_target at 0x7e3f9f1cd360>",
+      "process_results": "<function illusionbench_arshia_process_results_shape at 0x7e3f9f1ce320>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "shape_recall",
+          "aggregation": "<function illusionbench_arshia_aggregate at 0x7e3f9f1cf5b0>",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "max_new_tokens": 64,
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "num_beams": 1,
+        "do_sample": false,
+        "until": [
+          "\n\n"
+        ]
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 0.1,
+        "prompt_type": "official_like"
+      }
+    }
+  },
+  "versions": {
+    "illusionbench_arshia_icon_scene_test": 0.1,
+    "illusionbench_arshia_icon_shape_test": 0.1,
+    "illusionbench_arshia_in_scene_test": 0.1,
+    "illusionbench_arshia_in_shape_test": 0.1,
+    "illusionbench_arshia_logo_scene_test": 0.1,
+    "illusionbench_arshia_logo_shape_test": 0.1
+  },
+  "n-shot": {
+    "illusionbench_arshia_icon_scene_test": 0,
+    "illusionbench_arshia_icon_shape_test": 0,
+    "illusionbench_arshia_in_scene_test": 0,
+    "illusionbench_arshia_in_shape_test": 0,
+    "illusionbench_arshia_logo_scene_test": 0,
+    "illusionbench_arshia_logo_shape_test": 0
+  },
+  "higher_is_better": {
+    "illusionbench_arshia_icon_scene_test": {
+      "scene_recall": true
+    },
+    "illusionbench_arshia_icon_shape_test": {
+      "shape_recall": true
+    },
+    "illusionbench_arshia_in_scene_test": {
+      "scene_recall": true
+    },
+    "illusionbench_arshia_in_shape_test": {
+      "shape_recall": true
+    },
+    "illusionbench_arshia_logo_scene_test": {
+      "scene_recall": true
+    },
+    "illusionbench_arshia_logo_shape_test": {
+      "shape_recall": true
+    },
+    "illusionbench_arshia_test": {
+      "shape_recall": true,
+      "scene_recall": true
+    }
+  },
+  "n-samples": {
+    "illusionbench_arshia_icon_shape_test": {
+      "original": 100,
+      "effective": 2
+    },
+    "illusionbench_arshia_icon_scene_test": {
+      "original": 100,
+      "effective": 2
+    },
+    "illusionbench_arshia_logo_shape_test": {
+      "original": 100,
+      "effective": 2
+    },
+    "illusionbench_arshia_logo_scene_test": {
+      "original": 100,
+      "effective": 2
+    },
+    "illusionbench_arshia_in_shape_test": {
+      "original": 100,
+      "effective": 2
+    },
+    "illusionbench_arshia_in_scene_test": {
+      "original": 100,
+      "effective": 2
+    }
+  },
+  "config": {
+    "model": "onecat",
+    "model_args": "pretrained=/home/xinjiezhang/data/lei/models/OneCAT-3B,max_new_tokens=64,do_sample=false",
+    "batch_size": "1",
+    "batch_sizes": [],
+    "device": null,
+    "use_cache": null,
+    "limit": 2.0,
+    "bootstrap_iters": 100000,
+    "gen_kwargs": "",
+    "random_seed": 0,
+    "numpy_seed": 1234,
+    "torch_seed": 1234,
+    "fewshot_seed": 1234
+  },
+  "git_hash": "fc971e4",
+  "date": "20260118_175013",
+  "task_hashes": {},
+  "model_source": "onecat",
+  "model_name": "/home/xinjiezhang/data/lei/models/OneCAT-3B",
+  "model_name_sanitized": "models__OneCAT-3B",
+  "system_instruction": null,
+  "system_instruction_sha": null,
+  "fewshot_as_multiturn": false,
+  "chat_template": null,
+  "chat_template_sha": null,
+  "start_time": 311795.034298258,
+  "end_time": 311815.220226374,
+  "total_evaluation_time_seconds": "20.185928115970455"
+}

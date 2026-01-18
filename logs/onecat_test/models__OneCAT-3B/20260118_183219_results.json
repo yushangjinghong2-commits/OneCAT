@@ -1,0 +1,179 @@
+{
+  "results": {
+    "mmsi_bench": {
+      "alias": "mmsi_bench",
+      "MSR,none": 0.0,
+      "MSR_stderr,none": "N/A",
+      "average,none": 0.0,
+      "average_stderr,none": "N/A"
+    }
+  },
+  "group_subtasks": {
+    "mmsi_bench": []
+  },
+  "configs": {
+    "mmsi_bench": {
+      "task": "mmsi_bench",
+      "dataset_path": "/home/xinjiezhang/data/lei/datasets/mmsi_bench",
+      "dataset_kwargs": {
+        "data_files": {
+          "test": "msr.parquet"
+        }
+      },
+      "test_split": "test",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_visual": "<function msr_doc_to_visual at 0x7dec4eda53f0>",
+      "doc_to_text": "<function msr_doc_to_text at 0x7dec4eda5630>",
+      "doc_to_target": "answer",
+      "process_results": "<function msr_process_results at 0x7dec4eda5bd0>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "Positional Relationship (Obj.-Obj.)",
+          "aggregation": "<function msr_aggregate_results at 0x7dec4eda5fc0>",
+          "higher_is_better": true
+        },
+        {
+          "metric": "Positional Relationship (Cam.-Obj.)",
+          "aggregation": "<function msr_aggregate_results at 0x7dec4eda6320>",
+          "higher_is_better": true
+        },
+        {
+          "metric": "Positional Relationship (Cam.-Cam.)",
+          "aggregation": "<function msr_aggregate_results at 0x7dec4eda6680>",
+          "higher_is_better": true
+        },
+        {
+          "metric": "Positional Relationship (Obj.-Reg.)",
+          "aggregation": "<function msr_aggregate_results at 0x7dec4eda69e0>",
+          "higher_is_better": true
+        },
+        {
+          "metric": "Positional Relationship (Cam.-Reg.)",
+          "aggregation": "<function msr_aggregate_results at 0x7dec4eda6d40>",
+          "higher_is_better": true
+        },
+        {
+          "metric": "Positional Relationship (Reg.-Reg.)",
+          "aggregation": "<function msr_aggregate_results at 0x7dec4eda70a0>",
+          "higher_is_better": true
+        },
+        {
+          "metric": "Attribute (Meas.)",
+          "aggregation": "<function msr_aggregate_results at 0x7dec4eda7400>",
+          "higher_is_better": true
+        },
+        {
+          "metric": "Attribute (Appr.)",
+          "aggregation": "<function msr_aggregate_results at 0x7dec4eda7760>",
+          "higher_is_better": true
+        },
+        {
+          "metric": "Motion (Obj.)",
+          "aggregation": "<function msr_aggregate_results at 0x7dec4eda7ac0>",
+          "higher_is_better": true
+        },
+        {
+          "metric": "Motion (Cam.)",
+          "aggregation": "<function msr_aggregate_results at 0x7dec4eda7e20>",
+          "higher_is_better": true
+        },
+        {
+          "metric": "MSR",
+          "aggregation": "<function msr_aggregate_results at 0x7dec4edb81f0>",
+          "higher_is_better": true
+        },
+        {
+          "metric": "average",
+          "aggregation": "<function msr_aggregate_results at 0x7dec4edb8550>",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "max_new_tokens": 2048,
+        "temperature": 0.0,
+        "do_sample": false,
+        "until": [
+          "\n\n"
+        ]
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": [
+        {
+          "version": 0.0
+        }
+      ],
+      "lmms_eval_specific_kwargs": {
+        "default": {
+          "pre_prompt": "",
+          "post_prompt": "\nAnswer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+        },
+        "pre_prompt": "",
+        "post_prompt": "\nAnswer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+      }
+    }
+  },
+  "versions": {
+    "mmsi_bench": "Yaml"
+  },
+  "n-shot": {
+    "mmsi_bench": 0
+  },
+  "higher_is_better": {
+    "mmsi_bench": {
+      "Positional Relationship (Obj.-Obj.)": true,
+      "Positional Relationship (Cam.-Obj.)": true,
+      "Positional Relationship (Cam.-Cam.)": true,
+      "Positional Relationship (Obj.-Reg.)": true,
+      "Positional Relationship (Cam.-Reg.)": true,
+      "Positional Relationship (Reg.-Reg.)": true,
+      "Attribute (Meas.)": true,
+      "Attribute (Appr.)": true,
+      "Motion (Obj.)": true,
+      "Motion (Cam.)": true,
+      "MSR": true,
+      "average": true
+    }
+  },
+  "n-samples": {
+    "mmsi_bench": {
+      "original": 100,
+      "effective": 2
+    }
+  },
+  "config": {
+    "model": "onecat",
+    "model_args": "pretrained=/home/xinjiezhang/data/lei/models/OneCAT-3B,max_new_tokens=64,do_sample=false",
+    "batch_size": "1",
+    "batch_sizes": [],
+    "device": null,
+    "use_cache": null,
+    "limit": 2.0,
+    "bootstrap_iters": 100000,
+    "gen_kwargs": "",
+    "random_seed": 0,
+    "numpy_seed": 1234,
+    "torch_seed": 1234,
+    "fewshot_seed": 1234
+  },
+  "git_hash": "fc971e4",
+  "date": "20260118_183219",
+  "task_hashes": {},
+  "model_source": "onecat",
+  "model_name": "/home/xinjiezhang/data/lei/models/OneCAT-3B",
+  "model_name_sanitized": "models__OneCAT-3B",
+  "system_instruction": null,
+  "system_instruction_sha": null,
+  "fewshot_as_multiturn": false,
+  "chat_template": null,
+  "chat_template_sha": null,
+  "start_time": 314320.801774377,
+  "end_time": 314335.050244659,
+  "total_evaluation_time_seconds": "14.248470282007474"
+}

@@ -1,0 +1,403 @@
+{
+  "results": {
+    "mmsi_bench": {
+      " ": " ",
+      "alias": "mmsi_bench"
+    },
+    "mmsi_attribute_appr": {
+      "alias": " - mmsi_attribute_appr",
+      "Attribute (Appr.),none": 0.0,
+      "Attribute (Appr.)_stderr,none": "N/A",
+      "average,none": [],
+      "average_stderr,none": []
+    },
+    "mmsi_attribute_meas": {
+      "alias": " - mmsi_attribute_meas",
+      "Attribute (Meas.),none": 1.0,
+      "Attribute (Meas.)_stderr,none": "N/A",
+      "average,none": [],
+      "average_stderr,none": []
+    },
+    "mmsi_motion_cam": {
+      "alias": " - mmsi_motion_cam",
+      "Motion (Cam.),none": 0.0,
+      "Motion (Cam.)_stderr,none": "N/A",
+      "average,none": [],
+      "average_stderr,none": []
+    },
+    "mmsi_motion_obj": {
+      "alias": " - mmsi_motion_obj",
+      "Motion (Obj.),none": 0.0,
+      "Motion (Obj.)_stderr,none": "N/A",
+      "average,none": [],
+      "average_stderr,none": []
+    },
+    "mmsi_msr": {
+      "alias": " - mmsi_msr",
+      "MSR,none": 0.0,
+      "MSR_stderr,none": "N/A",
+      "average,none": [],
+      "average_stderr,none": []
+    }
+  },
+  "group_subtasks": {
+    "mmsi_bench": [
+      "mmsi_msr",
+      "mmsi_attribute_appr",
+      "mmsi_attribute_meas",
+      "mmsi_motion_cam",
+      "mmsi_motion_obj"
+    ]
+  },
+  "configs": {
+    "mmsi_attribute_appr": {
+      "task": "mmsi_attribute_appr",
+      "dataset_path": "parquet",
+      "dataset_kwargs": {
+        "data_files": "/home/xinjiezhang/data/lei/datasets/mmsi_bench/attribute_appr.parquet"
+      },
+      "test_split": "train",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_visual": "<function msr_doc_to_visual at 0x7337ff0537f0>",
+      "doc_to_text": "<function msr_doc_to_text at 0x7337ff0535b0>",
+      "doc_to_target": "answer",
+      "process_results": "<function msr_process_results at 0x7337ff0d1120>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "Attribute (Appr.)",
+          "aggregation": "<function msr_aggregate_results at 0x7337ff0d0dc0>",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "max_new_tokens": 2048,
+        "temperature": 0.0,
+        "do_sample": false,
+        "until": [
+          "\n\n"
+        ]
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": [
+        {
+          "version": 0.0
+        },
+        {
+          "description": "MMSI-Bench Attribute (Appearance) task with 100 samples and task-specific prompt"
+        }
+      ],
+      "lmms_eval_specific_kwargs": {
+        "default": {
+          "pre_prompt": "Pay close attention to the visual appearance attributes (color, shape, texture, orientation, count, visual features) in the images. Observe details carefully to identify and count objects.\n\n",
+          "post_prompt": "\n\nBased on your visual observation, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+        },
+        "pre_prompt": "Pay close attention to the visual appearance attributes (color, shape, texture, orientation, count, visual features) in the images. Observe details carefully to identify and count objects.\n\n",
+        "post_prompt": "\n\nBased on your visual observation, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+      }
+    },
+    "mmsi_attribute_meas": {
+      "task": "mmsi_attribute_meas",
+      "dataset_path": "parquet",
+      "dataset_kwargs": {
+        "data_files": "/home/xinjiezhang/data/lei/datasets/mmsi_bench/attribute_meas.parquet"
+      },
+      "test_split": "train",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_visual": "<function msr_doc_to_visual at 0x7337ff053b50>",
+      "doc_to_text": "<function msr_doc_to_text at 0x7337ff053d90>",
+      "doc_to_target": "answer",
+      "process_results": "<function msr_process_results at 0x7337ff0d03a0>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "Attribute (Meas.)",
+          "aggregation": "<function msr_aggregate_results at 0x7337ff0d0790>",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "max_new_tokens": 2048,
+        "temperature": 0.0,
+        "do_sample": false,
+        "until": [
+          "\n\n"
+        ]
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": [
+        {
+          "version": 0.0
+        },
+        {
+          "description": "MMSI-Bench Attribute (Measurable) task with 100 samples and task-specific prompt"
+        }
+      ],
+      "lmms_eval_specific_kwargs": {
+        "default": {
+          "pre_prompt": "Carefully observe the measurable attributes (size, length, width, height, distance, area, volume) in the images. Compare quantitative properties and estimate relative measurements.\n\n",
+          "post_prompt": "\n\nBased on your measurement analysis, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+        },
+        "pre_prompt": "Carefully observe the measurable attributes (size, length, width, height, distance, area, volume) in the images. Compare quantitative properties and estimate relative measurements.\n\n",
+        "post_prompt": "\n\nBased on your measurement analysis, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+      }
+    },
+    "mmsi_motion_cam": {
+      "task": "mmsi_motion_cam",
+      "dataset_path": "parquet",
+      "dataset_kwargs": {
+        "data_files": "/home/xinjiezhang/data/lei/datasets/mmsi_bench/motion_cam.parquet"
+      },
+      "test_split": "train",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_visual": "<function msr_doc_to_visual at 0x7337ff052cb0>",
+      "doc_to_text": "<function msr_doc_to_text at 0x7337ff05e290>",
+      "doc_to_target": "answer",
+      "process_results": "<function msr_process_results at 0x7337ff052680>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "Motion (Cam.)",
+          "aggregation": "<function msr_aggregate_results at 0x7337ff052f80>",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "max_new_tokens": 2048,
+        "temperature": 0.0,
+        "do_sample": false,
+        "until": [
+          "\n\n"
+        ]
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": [
+        {
+          "version": 0.0
+        },
+        {
+          "description": "MMSI-Bench Motion (Camera) task with 100 samples and task-specific prompt"
+        }
+      ],
+      "lmms_eval_specific_kwargs": {
+        "default": {
+          "pre_prompt": "Analyze the consecutive first-person perspective images. Determine how the camera (viewpoint) is moving or rotating by observing changes in the scene and object positions relative to the viewer.\n\n",
+          "post_prompt": "\n\nBased on your analysis of camera motion, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+        },
+        "pre_prompt": "Analyze the consecutive first-person perspective images. Determine how the camera (viewpoint) is moving or rotating by observing changes in the scene and object positions relative to the viewer.\n\n",
+        "post_prompt": "\n\nBased on your analysis of camera motion, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+      }
+    },
+    "mmsi_motion_obj": {
+      "task": "mmsi_motion_obj",
+      "dataset_path": "parquet",
+      "dataset_kwargs": {
+        "data_files": "/home/xinjiezhang/data/lei/datasets/mmsi_bench/motion_obj.parquet"
+      },
+      "test_split": "train",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_visual": "<function msr_doc_to_visual at 0x7337ff05d510>",
+      "doc_to_text": "<function msr_doc_to_text at 0x7337ff05d750>",
+      "doc_to_target": "answer",
+      "process_results": "<function msr_process_results at 0x7337ff05dcf0>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "Motion (Obj.)",
+          "aggregation": "<function msr_aggregate_results at 0x7337ff05e0e0>",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "max_new_tokens": 2048,
+        "temperature": 0.0,
+        "do_sample": false,
+        "until": [
+          "\n\n"
+        ]
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": [
+        {
+          "version": 0.0
+        },
+        {
+          "description": "MMSI-Bench Motion (Object) task with 100 samples and task-specific prompt"
+        }
+      ],
+      "lmms_eval_specific_kwargs": {
+        "default": {
+          "pre_prompt": "Track objects across the consecutive images. Identify which objects are moving, their direction of motion, and relative speeds by comparing their positions between frames.\n\n",
+          "post_prompt": "\n\nBased on your analysis of object motion, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+        },
+        "pre_prompt": "Track objects across the consecutive images. Identify which objects are moving, their direction of motion, and relative speeds by comparing their positions between frames.\n\n",
+        "post_prompt": "\n\nBased on your analysis of object motion, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+      }
+    },
+    "mmsi_msr": {
+      "task": "mmsi_msr",
+      "dataset_path": "parquet",
+      "dataset_kwargs": {
+        "data_files": "/home/xinjiezhang/data/lei/datasets/mmsi_bench/msr.parquet"
+      },
+      "test_split": "train",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_visual": "<function msr_doc_to_visual at 0x7337ff0d17e0>",
+      "doc_to_text": "<function msr_doc_to_text at 0x7337ff0d1a20>",
+      "doc_to_target": "answer",
+      "process_results": "<function msr_process_results at 0x7337ff0d1fc0>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "MSR",
+          "aggregation": "<function msr_aggregate_results at 0x7337ff0d23b0>",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "max_new_tokens": 2048,
+        "temperature": 0.0,
+        "do_sample": false,
+        "until": [
+          "\n\n"
+        ]
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": [
+        {
+          "version": 0.0
+        },
+        {
+          "description": "MMSI-Bench MSR (Multi-Step Reasoning) task with 100 samples and task-specific prompt"
+        }
+      ],
+      "lmms_eval_specific_kwargs": {
+        "default": {
+          "pre_prompt": "Analyze the given images step by step. Consider the spatial relationships, object positions, and changes across images. Break down complex reasoning into clear steps before answering.\n\n",
+          "post_prompt": "\n\nBased on your multi-step reasoning, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+        },
+        "pre_prompt": "Analyze the given images step by step. Consider the spatial relationships, object positions, and changes across images. Break down complex reasoning into clear steps before answering.\n\n",
+        "post_prompt": "\n\nBased on your multi-step reasoning, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+      }
+    }
+  },
+  "versions": {
+    "mmsi_attribute_appr": "Yaml",
+    "mmsi_attribute_meas": "Yaml",
+    "mmsi_motion_cam": "Yaml",
+    "mmsi_motion_obj": "Yaml",
+    "mmsi_msr": "Yaml"
+  },
+  "n-shot": {
+    "mmsi_attribute_appr": 0,
+    "mmsi_attribute_meas": 0,
+    "mmsi_motion_cam": 0,
+    "mmsi_motion_obj": 0,
+    "mmsi_msr": 0
+  },
+  "higher_is_better": {
+    "mmsi_attribute_appr": {
+      "Attribute (Appr.)": true
+    },
+    "mmsi_attribute_meas": {
+      "Attribute (Meas.)": true
+    },
+    "mmsi_bench": {
+      "MSR": true,
+      "Attribute (Appr.)": true,
+      "Attribute (Meas.)": true,
+      "Motion (Cam.)": true,
+      "Motion (Obj.)": true
+    },
+    "mmsi_motion_cam": {
+      "Motion (Cam.)": true
+    },
+    "mmsi_motion_obj": {
+      "Motion (Obj.)": true
+    },
+    "mmsi_msr": {
+      "MSR": true
+    }
+  },
+  "n-samples": {
+    "mmsi_msr": {
+      "original": 100,
+      "effective": 2
+    },
+    "mmsi_attribute_appr": {
+      "original": 100,
+      "effective": 2
+    },
+    "mmsi_attribute_meas": {
+      "original": 100,
+      "effective": 2
+    },
+    "mmsi_motion_cam": {
+      "original": 100,
+      "effective": 2
+    },
+    "mmsi_motion_obj": {
+      "original": 100,
+      "effective": 2
+    }
+  },
+  "config": {
+    "model": "onecat",
+    "model_args": "pretrained=/home/xinjiezhang/data/lei/models/OneCAT-3B,max_new_tokens=64,do_sample=false",
+    "batch_size": "1",
+    "batch_sizes": [],
+    "device": null,
+    "use_cache": null,
+    "limit": 2.0,
+    "bootstrap_iters": 100000,
+    "gen_kwargs": "",
+    "random_seed": 0,
+    "numpy_seed": 1234,
+    "torch_seed": 1234,
+    "fewshot_seed": 1234
+  },
+  "git_hash": "fc971e4",
+  "date": "20260118_184302",
+  "task_hashes": {},
+  "model_source": "onecat",
+  "model_name": "/home/xinjiezhang/data/lei/models/OneCAT-3B",
+  "model_name_sanitized": "models__OneCAT-3B",
+  "system_instruction": null,
+  "system_instruction_sha": null,
+  "fewshot_as_multiturn": false,
+  "chat_template": null,
+  "chat_template_sha": null,
+  "start_time": 314964.310833109,
+  "end_time": 314990.076935588,
+  "total_evaluation_time_seconds": "25.766102478955872"
+}

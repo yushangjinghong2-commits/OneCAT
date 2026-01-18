@@ -1,0 +1,413 @@
+{
+  "results": {
+    "mmsi_bench_visual_cot": {
+      " ": " ",
+      "alias": "mmsi_bench_visual_cot"
+    },
+    "mmsi_attribute_appr_visual_cot": {
+      "alias": " - mmsi_attribute_appr_visual_cot",
+      "Attribute (Appr.),none": 0.0,
+      "Attribute (Appr.)_stderr,none": "N/A",
+      "average,none": [],
+      "average_stderr,none": []
+    },
+    "mmsi_attribute_meas_visual_cot": {
+      "alias": " - mmsi_attribute_meas_visual_cot",
+      "Attribute (Meas.),none": 1.0,
+      "Attribute (Meas.)_stderr,none": "N/A",
+      "average,none": [],
+      "average_stderr,none": []
+    },
+    "mmsi_motion_cam_visual_cot": {
+      "alias": " - mmsi_motion_cam_visual_cot",
+      "Motion (Cam.),none": 0.0,
+      "Motion (Cam.)_stderr,none": "N/A",
+      "average,none": [],
+      "average_stderr,none": []
+    },
+    "mmsi_motion_obj_visual_cot": {
+      "alias": " - mmsi_motion_obj_visual_cot",
+      "Motion (Obj.),none": 0.0,
+      "Motion (Obj.)_stderr,none": "N/A",
+      "average,none": [],
+      "average_stderr,none": []
+    },
+    "mmsi_msr_visual_cot": {
+      "alias": " - mmsi_msr_visual_cot",
+      "MSR,none": 0.0,
+      "MSR_stderr,none": "N/A",
+      "average,none": [],
+      "average_stderr,none": []
+    }
+  },
+  "group_subtasks": {
+    "mmsi_bench_visual_cot": [
+      "mmsi_msr_visual_cot",
+      "mmsi_attribute_appr_visual_cot",
+      "mmsi_attribute_meas_visual_cot",
+      "mmsi_motion_cam_visual_cot",
+      "mmsi_motion_obj_visual_cot"
+    ]
+  },
+  "configs": {
+    "mmsi_attribute_appr_visual_cot": {
+      "task": "mmsi_attribute_appr_visual_cot",
+      "dataset_path": "parquet",
+      "dataset_kwargs": {
+        "data_files": "/home/xinjiezhang/data/lei/datasets/mmsi_bench/attribute_appr.parquet"
+      },
+      "test_split": "train",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_visual": "<function msr_doc_to_visual at 0x799d67f43880>",
+      "doc_to_text": "<function msr_doc_to_text_with_gen_prompt at 0x799d67f435b0>",
+      "doc_to_target": "answer",
+      "process_results": "<function msr_process_results at 0x799e7832e8c0>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "Attribute (Appr.)",
+          "aggregation": "<function msr_aggregate_results at 0x799d67e6cdc0>",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "max_new_tokens": 2048,
+        "temperature": 0.0,
+        "do_sample": false,
+        "until": [
+          "\n\n"
+        ]
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": [
+        {
+          "version": 0.0
+        },
+        {
+          "description": "MMSI-Bench Attribute (Appearance) task with visual CoT two-stage inference"
+        }
+      ],
+      "lmms_eval_specific_kwargs": {
+        "default": {
+          "generation_prompt": "Create a visualization that highlights and labels the visual appearance attributes (color, shape, texture, orientation, count) in the scene. Use annotations, bounding boxes, and labels to make object features and counts clearly visible.",
+          "pre_prompt": "You are given the original image(s) and a visualization highlighting appearance attributes. Use both to analyze color, shape, texture, orientation, and object counts.\n\n",
+          "post_prompt": "\n\nBased on your visual observation, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+        },
+        "generation_prompt": "Create a visualization that highlights and labels the visual appearance attributes (color, shape, texture, orientation, count) in the scene. Use annotations, bounding boxes, and labels to make object features and counts clearly visible.",
+        "pre_prompt": "You are given the original image(s) and a visualization highlighting appearance attributes. Use both to analyze color, shape, texture, orientation, and object counts.\n\n",
+        "post_prompt": "\n\nBased on your visual observation, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+      }
+    },
+    "mmsi_attribute_meas_visual_cot": {
+      "task": "mmsi_attribute_meas_visual_cot",
+      "dataset_path": "parquet",
+      "dataset_kwargs": {
+        "data_files": "/home/xinjiezhang/data/lei/datasets/mmsi_bench/attribute_meas.parquet"
+      },
+      "test_split": "train",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_visual": "<function msr_doc_to_visual at 0x799d67f43ac0>",
+      "doc_to_text": "<function msr_doc_to_text_with_gen_prompt at 0x799d67f43d90>",
+      "doc_to_target": "answer",
+      "process_results": "<function msr_process_results at 0x799d67e6c310>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "Attribute (Meas.)",
+          "aggregation": "<function msr_aggregate_results at 0x799d67e6c700>",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "max_new_tokens": 2048,
+        "temperature": 0.0,
+        "do_sample": false,
+        "until": [
+          "\n\n"
+        ]
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": [
+        {
+          "version": 0.0
+        },
+        {
+          "description": "MMSI-Bench Attribute (Measurable) task with visual CoT two-stage inference"
+        }
+      ],
+      "lmms_eval_specific_kwargs": {
+        "default": {
+          "generation_prompt": "Create a visualization that highlights and annotates the measurable attributes (size, length, width, height, distance, area, volume) in the scene. Draw measurement lines, labels, and comparison markers to make quantitative relationships clear.",
+          "pre_prompt": "You are given the original image(s) and a visualization highlighting measurable attributes. Use both to analyze size, length, width, height, distance, area, and volume relationships.\n\n",
+          "post_prompt": "\n\nBased on your measurement analysis, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+        },
+        "generation_prompt": "Create a visualization that highlights and annotates the measurable attributes (size, length, width, height, distance, area, volume) in the scene. Draw measurement lines, labels, and comparison markers to make quantitative relationships clear.",
+        "pre_prompt": "You are given the original image(s) and a visualization highlighting measurable attributes. Use both to analyze size, length, width, height, distance, area, and volume relationships.\n\n",
+        "post_prompt": "\n\nBased on your measurement analysis, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+      }
+    },
+    "mmsi_motion_cam_visual_cot": {
+      "task": "mmsi_motion_cam_visual_cot",
+      "dataset_path": "parquet",
+      "dataset_kwargs": {
+        "data_files": "/home/xinjiezhang/data/lei/datasets/mmsi_bench/motion_cam.parquet"
+      },
+      "test_split": "train",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_visual": "<function msr_doc_to_visual at 0x799d67f42b00>",
+      "doc_to_text": "<function msr_doc_to_text_with_gen_prompt at 0x799d67f42830>",
+      "doc_to_target": "answer",
+      "process_results": "<function msr_process_results at 0x799d67f42b90>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "Motion (Cam.)",
+          "aggregation": "<function msr_aggregate_results at 0x799d67f42f80>",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "max_new_tokens": 2048,
+        "temperature": 0.0,
+        "do_sample": false,
+        "until": [
+          "\n\n"
+        ]
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": [
+        {
+          "version": 0.0
+        },
+        {
+          "description": "MMSI-Bench Motion (Camera) task with visual CoT two-stage inference"
+        }
+      ],
+      "lmms_eval_specific_kwargs": {
+        "default": {
+          "generation_prompt": "Create a visualization showing camera motion analysis. Draw arrows indicating the direction of camera movement/rotation, highlight reference points that shift between frames, and annotate the type of camera motion (pan, tilt, zoom, dolly, etc.).",
+          "pre_prompt": "You are given consecutive first-person perspective images and a visualization of camera motion. Use both to determine how the camera (viewpoint) is moving or rotating.\n\n",
+          "post_prompt": "\n\nBased on your analysis of camera motion, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+        },
+        "generation_prompt": "Create a visualization showing camera motion analysis. Draw arrows indicating the direction of camera movement/rotation, highlight reference points that shift between frames, and annotate the type of camera motion (pan, tilt, zoom, dolly, etc.).",
+        "pre_prompt": "You are given consecutive first-person perspective images and a visualization of camera motion. Use both to determine how the camera (viewpoint) is moving or rotating.\n\n",
+        "post_prompt": "\n\nBased on your analysis of camera motion, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+      }
+    },
+    "mmsi_motion_obj_visual_cot": {
+      "task": "mmsi_motion_obj_visual_cot",
+      "dataset_path": "parquet",
+      "dataset_kwargs": {
+        "data_files": "/home/xinjiezhang/data/lei/datasets/mmsi_bench/motion_obj.parquet"
+      },
+      "test_split": "train",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_visual": "<function msr_doc_to_visual at 0x799d67fe1510>",
+      "doc_to_text": "<function msr_doc_to_text_with_gen_prompt at 0x799d67fe17e0>",
+      "doc_to_target": "answer",
+      "process_results": "<function msr_process_results at 0x799d67fe1cf0>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "Motion (Obj.)",
+          "aggregation": "<function msr_aggregate_results at 0x799d67fe20e0>",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "max_new_tokens": 2048,
+        "temperature": 0.0,
+        "do_sample": false,
+        "until": [
+          "\n\n"
+        ]
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": [
+        {
+          "version": 0.0
+        },
+        {
+          "description": "MMSI-Bench Motion (Object) task with visual CoT two-stage inference"
+        }
+      ],
+      "lmms_eval_specific_kwargs": {
+        "default": {
+          "generation_prompt": "Create a visualization showing object motion tracking. Draw motion trails, arrows indicating direction of movement, and highlight moving objects with bounding boxes. Annotate relative speeds and trajectories of different objects.",
+          "pre_prompt": "You are given consecutive images and a visualization of object motion. Use both to track objects, identify which are moving, their direction, and relative speeds.\n\n",
+          "post_prompt": "\n\nBased on your analysis of object motion, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+        },
+        "generation_prompt": "Create a visualization showing object motion tracking. Draw motion trails, arrows indicating direction of movement, and highlight moving objects with bounding boxes. Annotate relative speeds and trajectories of different objects.",
+        "pre_prompt": "You are given consecutive images and a visualization of object motion. Use both to track objects, identify which are moving, their direction, and relative speeds.\n\n",
+        "post_prompt": "\n\nBased on your analysis of object motion, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+      }
+    },
+    "mmsi_msr_visual_cot": {
+      "task": "mmsi_msr_visual_cot",
+      "dataset_path": "parquet",
+      "dataset_kwargs": {
+        "data_files": "/home/xinjiezhang/data/lei/datasets/mmsi_bench/msr.parquet"
+      },
+      "test_split": "train",
+      "full_docs": false,
+      "process_results_use_image": false,
+      "doc_to_visual": "<function msr_doc_to_visual at 0x799d67e6d630>",
+      "doc_to_text": "<function msr_doc_to_text_with_gen_prompt at 0x799d67e6d900>",
+      "doc_to_target": "answer",
+      "process_results": "<function msr_process_results at 0x799d67e6de10>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "MSR",
+          "aggregation": "<function msr_aggregate_results at 0x799d67e6e200>",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "max_new_tokens": 2048,
+        "temperature": 0.0,
+        "do_sample": false,
+        "until": [
+          "\n\n"
+        ]
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": [
+        {
+          "version": 0.0
+        },
+        {
+          "description": "MMSI-Bench MSR (Multi-Step Reasoning) task with visual CoT two-stage inference"
+        }
+      ],
+      "lmms_eval_specific_kwargs": {
+        "default": {
+          "generation_prompt": "Create a visualization that breaks down the multi-step reasoning process. Annotate spatial relationships, object positions, and key changes across images. Draw diagrams showing logical connections and intermediate reasoning steps.",
+          "pre_prompt": "You are given the original images and a visualization breaking down the reasoning steps. Use both to analyze spatial relationships, object positions, and changes across images.\n\n",
+          "post_prompt": "\n\nBased on your multi-step reasoning, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+        },
+        "generation_prompt": "Create a visualization that breaks down the multi-step reasoning process. Annotate spatial relationships, object positions, and key changes across images. Draw diagrams showing logical connections and intermediate reasoning steps.",
+        "pre_prompt": "You are given the original images and a visualization breaking down the reasoning steps. Use both to analyze spatial relationships, object positions, and changes across images.\n\n",
+        "post_prompt": "\n\nBased on your multi-step reasoning, answer with the option's letter from the given choices directly. Enclose the option's letter within ``."
+      }
+    }
+  },
+  "versions": {
+    "mmsi_attribute_appr_visual_cot": "Yaml",
+    "mmsi_attribute_meas_visual_cot": "Yaml",
+    "mmsi_motion_cam_visual_cot": "Yaml",
+    "mmsi_motion_obj_visual_cot": "Yaml",
+    "mmsi_msr_visual_cot": "Yaml"
+  },
+  "n-shot": {
+    "mmsi_attribute_appr_visual_cot": 0,
+    "mmsi_attribute_meas_visual_cot": 0,
+    "mmsi_motion_cam_visual_cot": 0,
+    "mmsi_motion_obj_visual_cot": 0,
+    "mmsi_msr_visual_cot": 0
+  },
+  "higher_is_better": {
+    "mmsi_attribute_appr_visual_cot": {
+      "Attribute (Appr.)": true
+    },
+    "mmsi_attribute_meas_visual_cot": {
+      "Attribute (Meas.)": true
+    },
+    "mmsi_bench_visual_cot": {
+      "MSR": true,
+      "Attribute (Appr.)": true,
+      "Attribute (Meas.)": true,
+      "Motion (Cam.)": true,
+      "Motion (Obj.)": true
+    },
+    "mmsi_motion_cam_visual_cot": {
+      "Motion (Cam.)": true
+    },
+    "mmsi_motion_obj_visual_cot": {
+      "Motion (Obj.)": true
+    },
+    "mmsi_msr_visual_cot": {
+      "MSR": true
+    }
+  },
+  "n-samples": {
+    "mmsi_msr_visual_cot": {
+      "original": 100,
+      "effective": 2
+    },
+    "mmsi_attribute_appr_visual_cot": {
+      "original": 100,
+      "effective": 2
+    },
+    "mmsi_attribute_meas_visual_cot": {
+      "original": 100,
+      "effective": 2
+    },
+    "mmsi_motion_cam_visual_cot": {
+      "original": 100,
+      "effective": 2
+    },
+    "mmsi_motion_obj_visual_cot": {
+      "original": 100,
+      "effective": 2
+    }
+  },
+  "config": {
+    "model": "onecat",
+    "model_args": "pretrained=/home/xinjiezhang/data/lei/models/OneCAT-3B,max_new_tokens=64,do_sample=false",
+    "batch_size": "1",
+    "batch_sizes": [],
+    "device": null,
+    "use_cache": null,
+    "limit": 2.0,
+    "bootstrap_iters": 100000,
+    "gen_kwargs": "",
+    "random_seed": 0,
+    "numpy_seed": 1234,
+    "torch_seed": 1234,
+    "fewshot_seed": 1234
+  },
+  "git_hash": "fc971e4",
+  "date": "20260118_184357",
+  "task_hashes": {},
+  "model_source": "onecat",
+  "model_name": "/home/xinjiezhang/data/lei/models/OneCAT-3B",
+  "model_name_sanitized": "models__OneCAT-3B",
+  "system_instruction": null,
+  "system_instruction_sha": null,
+  "fewshot_as_multiturn": false,
+  "chat_template": null,
+  "chat_template_sha": null,
+  "start_time": 315019.320191734,
+  "end_time": 315046.084931828,
+  "total_evaluation_time_seconds": "26.764740094018634"
+}
