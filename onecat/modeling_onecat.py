@@ -309,6 +309,22 @@ def rotate_half(x):
 
 
 def _apply_rotary_pos_emb_i2t(q, k, cos, sin, position_ids, unsqueeze_dim=1):
+    # Early exit for empty caches or empty position ids
+    if cos is None or sin is None:
+        return q, k
+    if cos.numel() == 0 or sin.numel() == 0:
+        return q, k
+    if position_ids is None or position_ids.numel() == 0:
+        return q, k
+
+    max_pos = cos.size(0)
+    if max_pos <= 0:
+        return q, k
+
+    # Ensure position_ids are within valid range [0, max_pos - 1]
+    if position_ids.dtype != torch.long:
+        position_ids = position_ids.long()
+    position_ids = position_ids.clamp(0, max_pos - 1)
 
     cos = cos[position_ids].unsqueeze(unsqueeze_dim)
     sin = sin[position_ids].unsqueeze(unsqueeze_dim)
