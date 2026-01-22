@@ -482,12 +482,13 @@ class Qwen2Attention(nn.Module):
     
 
         if attention_mask is not None:
-            if attention_mask.size() != (bsz, 1, q_len, kv_seq_len):
-                raise ValueError(
-                    f"Attention mask should be of size {(bsz, 1, q_len, kv_seq_len)}, but is {attention_mask.size()}"
-                )
-
-            attn_weights = attn_weights + attention_mask
+            # Skip attention mask validation and application when q_len is 0 (edge case in generation)
+            if q_len > 0:
+                if attention_mask.size() != (bsz, 1, q_len, kv_seq_len):
+                    raise ValueError(
+                        f"Attention mask should be of size {(bsz, 1, q_len, kv_seq_len)}, but is {attention_mask.size()}"
+                    )
+                attn_weights = attn_weights + attention_mask
 
         # upcast attention to fp32
         attn_weights = nn.functional.softmax(attn_weights, dim=-1, dtype=torch.float32).to(query_states.dtype)
@@ -1540,7 +1541,12 @@ class Qwen2VEForCausalLM(Qwen2PreTrainedModel):
                 position_ids = position_ids[:, -input_ids.shape[1] :]
 
         # if `inputs_embeds` are passed, we only want to use them in the 1st generation step
-        if inputs_embeds is not None and past_key_values is None:
+        # Check if past_key_values is empty (first generation step) not just None
+        past_is_empty = past_key_values is None or (
+            hasattr(past_key_values, 'get_seq_length') and past_key_values.get_seq_length() == 0
+        )
+        
+        if inputs_embeds is not None and past_is_empty:
             model_inputs = {"inputs_embeds": inputs_embeds}
         else:
             model_inputs = {"input_ids": input_ids}
@@ -1923,10 +1929,11 @@ class OneCatVLModel(PreTrainedModel):
             image_tokens = IMG_START_TOKEN + IMG_CONTEXT_TOKEN * num_image_token * num_patches + IMG_END_TOKEN
             query = query.replace('<image>', image_tokens, 1)
 
-        model_inputs = tokenizer(query, return_tensors='pt')
+        model_inputs = tokenizer(query, return_tensors='pt', max_length=1000, truncation=False)
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         input_ids = model_inputs['input_ids'].to(device)
         attention_mask = model_inputs['attention_mask'].to(device)
+        
         generation_config['eos_token_id'] = eos_token_id
         generation_output = self.generate(
             pixel_values=pixel_values,
@@ -1935,7 +1942,17 @@ class OneCatVLModel(PreTrainedModel):
             pixel_values_thumbnail=pixel_values_thumbnail,
             **generation_config
         )
-        response = tokenizer.batch_decode(generation_output, skip_special_tokens=True)[0]
+        
+        # Extract sequences from the output
+        generated_ids = generation_output.sequences if hasattr(generation_output, 'sequences') else generation_output
+        
+        # Check if generation produced output
+        if generated_ids.shape[1] == 0:
+            print(f"Warning: Generation produced empty output. Input shape: {pixel_values.shape if pixel_values is not None else 'None'}")
+            print(f"token_h: {token_h}, token_w: {token_w}, num_image_token: {num_image_token}")
+            return ""
+        
+        response = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
         response = response.split(template.sep.strip())[0].strip()
         history.append((question, response))
         if return_history:
@@ -1972,12 +1989,14 @@ class OneCatVLModel(PreTrainedModel):
             else:
                 image_patch_embeds = [self.extract_patch_feature(pixel_values).reshape(-1, C)]
                 if pixel_values_thumbnail is not None:
-                    image_patch_embeds += [self.extract_patch_feature(pixel_values_thumbnail).reshape(-1, C)]
+                    thumbnail_embeds = self.extract_patch_feature(pixel_values_thumbnail).reshape(-1, C)
+                    image_patch_embeds += [thumbnail_embeds]
                 image_patch_embeds = torch.cat(image_patch_embeds)
 
             input_ids = input_ids.reshape(B * N)
             selected = (input_ids == self.img_context_token_id)
             assert selected.sum() != 0
+            
             input_patch_embeds[selected] = image_patch_embeds.reshape(-1, C).to(input_patch_embeds.device)
 
             input_patch_embeds = input_patch_embeds.reshape(B, N, C)
